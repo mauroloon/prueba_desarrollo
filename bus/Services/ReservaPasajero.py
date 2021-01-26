@@ -45,6 +45,7 @@ class ReservaService:
                 
                 i=0
                 for dato in data.data:
+                    """ Se ingresa el nombre del origen y destino """
                     lugar_inicio = Lugar.objects.get(LGR_ID=dato['TYO_ID']['LGR_ID_INICIO'])
                     data.data[i]['TYO_ID']['nombre_origen'] = lugar_inicio.LGR_NOMBRE
                     lugar_destino = Lugar.objects.get(LGR_ID=dato['TYO_ID']['LGR_ID_TERMINO'])
@@ -170,6 +171,7 @@ class ReservaService:
         return self.resp
 
     def get_reserva_pasajero(self, id):
+        """ Obtiene los pasajeros de una reserva(programa) """
         try:
             reserva = ReservaPasajero.objects.get(RSV_ID=id)            
             pasajero = Pasajeros.objects.filter(VJE_ID=reserva, PSR_VIGENCIA=1).all()

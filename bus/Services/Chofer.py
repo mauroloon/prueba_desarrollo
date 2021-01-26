@@ -119,7 +119,6 @@ class ChoferService:
         return self.resp
     
     def delete(self, id):
-        """ Deshabilitar """
         try:            
             chofer = Chofer.objects.filter(CFR_ID = id).first()
 

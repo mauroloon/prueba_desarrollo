@@ -3,7 +3,7 @@ from bus.models import Lugar
 from bus.Serializers import BusSerializer
 from bus.Serializers import LugarSerializer
 
-class BusService:    
+class BusService:
     def __init__(self): 
         self.codigo = 0
         self.nombre = ''

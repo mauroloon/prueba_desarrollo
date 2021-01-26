@@ -10,6 +10,7 @@ from bus.Services import ReservaService
 from bus.Services import PasajeroService
 from bus.Services import EstadosService
 
+""" Delete sirve para cambiar la vigencia de 1 a 0, lo cual corresponde a 'no vigente' """
 
 @api_view(['GET','POST','PUT','DELETE'])
 @permission_classes([AllowAny,])

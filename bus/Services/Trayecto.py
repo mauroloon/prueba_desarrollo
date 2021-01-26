@@ -43,18 +43,18 @@ class TrayectoService:
 
                 i=0
                 for dato in data.data:
+                    """ Se colocal el nombre de origen y destino """
                     lugar_inicio = Lugar.objects.get(LGR_ID=dato['LGR_ID_INICIO'])
                     data.data[i]['nombre_origen'] = lugar_inicio.LGR_NOMBRE
                     lugar_destino = Lugar.objects.get(LGR_ID=dato['LGR_ID_TERMINO'])
                     data.data[i]['nombre_destino'] = lugar_destino.LGR_NOMBRE
-                    #Promedio de pasajeros por trayecto
+                    """ Promedio de pasajeros por trayecto """
                     totalPasajeros = Pasajeros.objects.filter(PSR_VIGENCIA=1, VJE_ID__TYO_ID=dato['TYO_ID']).count()
                     totalReservasTrayecto = ReservaPasajero.objects.filter(TYO_ID=dato['TYO_ID']).count()
                     if totalPasajeros == 0 and totalReservasTrayecto == 0:
                         data.data[i]['promedio'] = 0
                     else:
                         data.data[i]['promedio'] = totalPasajeros/totalReservasTrayecto
-                    #print(f'Reserva {dato["TYO_ID"]} total de pasajeros {totalPasajeros}, total reservas de ese trayecto {totalReservasTrayecto}')
                     i=i+1
                 
                 self.data = data.data
@@ -133,7 +133,6 @@ class TrayectoService:
         return self.resp
     
     def delete(self, id):
-        """ Deshabilitar """
         try:            
             trayecto = Trayecto.objects.filter(TYO_ID = id).first()
 

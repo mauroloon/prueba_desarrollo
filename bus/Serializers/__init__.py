@@ -1,3 +1,4 @@
+#Serializer
 from bus.Serializers.busSerializer import BusSerializer
 from bus.Serializers.choferSerializer import ChoferSerializer
 from bus.Serializers.trayectoSerializer import TrayectoSerializer
