@@ -14,9 +14,9 @@ Se necesita la versión
 
 1. Primeramente clonar el proyecto desde: https://github.com/mauroloon/prueba_desarrollo.git
 2. Abrir el terminal e ir a la carpeta en donde se ha clonado la aplicación
-3. Crear virtualenv -> virtualenv -p python3 env 
-4. Iniciar el virtualenv -> $ source env/bin/activate
-5. A través del terminal entrar a la carpeta donde está el archivo "requirements.txt" e instalar con el comando -> $ pip3 install -r requirements.txt
+3. Crear virtualenv -> virtualenv -p python env 
+4. Iniciar env -> cd env/scripts, luego escribir activate
+5. A través del terminal entrar a la carpeta donde está el archivo "requirements.txt" e instalar con el comando -> $ pip install -r requirements.txt
 6. Ahora entrar a la carpeta "frontend" (no necesariamente con el virtualenv activado) e instalar package.json -> $ npm install
 
 ## Iniciar backend📦
