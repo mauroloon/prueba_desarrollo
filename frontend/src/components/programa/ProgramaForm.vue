@@ -7,6 +7,7 @@
         id="fechaInicio"
         v-model="fechaInicio.val"
         @blur="limpiarValidacion('fechaInicio')"
+        @change="validarFechas"
       />
       <p v-if="!fechaInicio.isValid">La fecha de inicio no debe ir vacío.</p>
     </div>
@@ -18,6 +19,7 @@
         id="fechaTermino"
         v-model="fechaTermino.val"
         @blur="limpiarValidacion('fechaTermino')"
+        @change="validarFechas"
       />
       <p v-if="!fechaTermino.isValid">La fecha de llegada no debe ir vacío.</p>
     </div>
@@ -256,7 +258,7 @@ export default {
       this.isLoading = false;
     },
     async cargarChoferes() {
-      //TODO: VALIDAR DEPENDIENDO LA DISPONIBILIDAD DE OTRO
+      //TODO: CARGAR choferes DISPONIBLES DPS/ ruta finalizada y/o en fecha
       this.isLoading = true;
       try {
         await this.$store.dispatch("choferes/cargarChoferes");
@@ -300,6 +302,14 @@ export default {
 
       if (responseData.code == 1) {
         this.estados = responseData.data;
+      }
+    },
+    validarFechas() {
+      if (this.fechaInicio.val !== "" && this.fechaTermino.val !== "") {
+        /* en caso de que la fecha de inicio sea mayor a la de termino, se borra la de termino */
+        if (moment(this.fechaInicio.val).isAfter(this.fechaTermino.val)) {
+          this.fechaTermino.val = "";
+        }
       }
     }
   }

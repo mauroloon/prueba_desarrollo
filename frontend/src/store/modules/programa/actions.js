@@ -151,7 +151,7 @@ export default {
     const responseData = await response.json();
 
     if (responseData.code === 1) {
-      console.log("Acción actualizado.");
+      console.log("Pasajero actualizado.");
     }
   }
 };

@@ -7,7 +7,7 @@ class Pasajeros(models.Model):
     PSR_ID = models.AutoField(primary_key=True)
     PSR_N_RESERVA = models.IntegerField()
     PRS_ID = models.ForeignKey(Persona, on_delete=models.CASCADE)
-    VJE_ID = models.ForeignKey(ReservaPasajero, on_delete=models.CASCADE)
+    VJE_ID = models.ForeignKey(ReservaPasajero, on_delete=models.CASCADE) # Enlazado con RSV_ID
     PSR_VIGENCIA = models.IntegerField(default=1)
 
     class Meta:

@@ -122,7 +122,6 @@ export default {
           lugarIdInicial: this.inicio.val,
           lugarIdFinal: this.destino.val
         };
-        console.log(formData);
         this.$emit("guardar", formData);
       }
     },

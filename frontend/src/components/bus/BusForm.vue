@@ -26,6 +26,7 @@
         id="ubicacion"
         v-model="ubicacion.val"
         @blur="limpiarValidacion('ubicacion')"
+        class="form-select"
       >
         <option value="-1" selected> Seleccionar </option>
         <option v-for="lugar in lugares" :key="lugar.id" :value="lugar.id">
@@ -37,7 +38,11 @@
 
     <div class="form-control" v-if="modoEdit">
       <label for="modelo">Vigente</label>
-      <select v-model="vigencia.val" @blur="limpiarValidacion('vigencia')">
+      <select
+        class="form-select"
+        v-model="vigencia.val"
+        @blur="limpiarValidacion('vigencia')"
+      >
         <option value="1"> Si </option>
         <option value="0"> No </option>
       </select>
@@ -86,7 +91,7 @@ export default {
     this.cargarLugares();
     if (this.$route.params.id) {
       this.modoEdit = true;
-      this.idBus = this.$route.params.id
+      this.idBus = this.$route.params.id;
       this.cargarBus();
     }
   },
@@ -143,7 +148,9 @@ export default {
       }
     },
     async cargarBus() {
-      const response = await fetch(`http://localhost:8000/v1/bus/bus/${this.idBus}/`);
+      const response = await fetch(
+        `http://localhost:8000/v1/bus/bus/${this.idBus}/`
+      );
       const responseData = await response.json();
 
       if (responseData.code == 1) {
@@ -211,5 +218,17 @@ h3 {
 .invalid input,
 .invalid textarea {
   border: 1px solid red;
+}
+
+.form-select {
+  display: block;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 </style>

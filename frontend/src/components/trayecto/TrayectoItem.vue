@@ -6,16 +6,16 @@
     <td>{{ promedio }}</td>
     <td>
       <button
-        class="btn"
+        class="btn danger"
         v-if="deshabilitarBotton"
         @click="deshabilitarTrayecto"
       >
         <i class="fa fa-trash"></i>
       </button>
-      <button class="btn" @click="editarTrayecto">
+      <button class="btn base" @click="editarTrayecto">
         <i class="fa fa-list-ul"></i>
       </button>
-      <button class="btn" @click="listaBusesTrayecto">
+      <button class="btn success" @click="listaBusesTrayecto">
         Bus
       </button>
     </td>
@@ -155,7 +155,6 @@ td {
 }
 
 .btn {
-  background-color: DodgerBlue;
   border: none;
   color: white;
   padding: 12px 16px;
@@ -163,7 +162,24 @@ td {
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: RoyalBlue;
+.danger {
+  background-color: #af0000;
+}
+.danger:hover {
+  background-color: #ff0000;
+}
+
+.base {
+  background-color: DodgerBlue;
+}
+.base:hover {
+  background-color: rgb(0, 64, 255);
+}
+
+.success {
+  background-color: #197e00;
+}
+.success:hover {
+  background-color: #2cdb00;
 }
 </style>

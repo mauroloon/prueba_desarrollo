@@ -1,4 +1,4 @@
-# Proyecto Viajes Vue + Django
+# Proyecto Viajes Vue + Django 🐍
 
 Proyecto prueba con Vue js como frontend y Django como backend
 

@@ -1,5 +1,9 @@
 from django.db import models
 
+
+#Programado
+#En ruta
+#Finalizado
 class Estado(models.Model):
     EST_ID = models.AutoField(primary_key=True)
     EST_NOMBRE = models.CharField(max_length=100,blank=True, null=True)

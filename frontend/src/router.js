@@ -11,6 +11,7 @@ import ProgramaRegistro from "./pages/programa/ProgramaRegistro.vue";
 import PasajeroRegistro from "./pages/programa/PasajeroRegistro.vue";
 import PasajeroEditar from "./pages/pasajero/PasajeroRegistro.vue";
 
+//TODO: CAMBIAR NOMBRES
 const router = createRouter({
   history: createWebHistory(),
   routes: [

@@ -44,16 +44,16 @@ import ChoferItem from "../../components/chofer/ChoferItem.vue";
 export default {
   data() {
     return {
-      isLoading: false,
+      isLoading: false
     };
   },
   components: {
-    ChoferItem,
+    ChoferItem
   },
   computed: {
     choferes() {
       return this.$store.getters["choferes/choferes"];
-    },
+    }
   },
   created() {
     this.cargarChoferes();
@@ -67,8 +67,8 @@ export default {
         console.log(error);
       }
       this.isLoading = false;
-    },
-  },
+    }
+  }
 };
 </script>
 

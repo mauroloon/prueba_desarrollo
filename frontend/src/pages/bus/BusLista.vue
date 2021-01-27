@@ -7,7 +7,7 @@
             >Refrescar</base-button
           >
           <base-button v-if="!isLoading" link to="/busRegistro">
-            Registar Bus
+            Registrar Bus
           </base-button>
         </div>
         <div v-if="isLoading">

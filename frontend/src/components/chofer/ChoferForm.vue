@@ -39,6 +39,7 @@
         id="ubicacion"
         v-model="ubicacion.val"
         @blur="limpiarValidacion('ubicacion')"
+        class="form-select"
       >
         <option value="-1" selected> Seleccionar </option>
         <option v-for="lugar in lugares" :key="lugar.id" :value="lugar.id">
@@ -50,7 +51,11 @@
 
     <div class="form-control" v-if="modoEdit">
       <label for="modelo">Vigente</label>
-      <select v-model="vigencia.val" @blur="limpiarValidacion('vigencia')">
+      <select
+        class="form-select"
+        v-model="vigencia.val"
+        @blur="limpiarValidacion('vigencia')"
+      >
         <option value="1"> Si </option>
         <option value="0"> No </option>
       </select>
@@ -70,39 +75,39 @@ export default {
       idChofer: "",
       nombre: {
         val: "",
-        isValid: true,
+        isValid: true
       },
       apellido: {
         val: "",
-        isValid: true,
+        isValid: true
       },
       rut: {
         val: "",
-        isValid: true,
+        isValid: true
       },
       ubicacion: {
         val: "-1",
-        isValid: true,
+        isValid: true
       },
       vigencia: {
         val: "-1",
-        isValid: true,
+        isValid: true
       },
       formValido: true,
-      modoEdit: false,
+      modoEdit: false
     };
   },
   computed: {
     lugares() {
       const lugares = this.$store.getters["buses/lugares"];
       return lugares;
-    },
+    }
   },
   created() {
     this.cargarLugares();
     if (this.$route.params.id) {
       this.modoEdit = true;
-      this.idChofer = this.$route.params.id
+      this.idChofer = this.$route.params.id;
       this.cargarChofer();
     }
   },
@@ -152,7 +157,7 @@ export default {
           apellido: this.apellido.val,
           rut: this.rut.val,
           lugar: this.ubicacion.val,
-          vigencia: this.vigencia.val,
+          vigencia: this.vigencia.val
         };
         this.$emit("editar", formData);
       } else {
@@ -160,24 +165,26 @@ export default {
           nombre: this.nombre.val,
           apellido: this.apellido.val,
           rut: this.rut.val,
-          lugar: this.ubicacion.val,
+          lugar: this.ubicacion.val
         };
         this.$emit("guardar", formData);
       }
     },
     async cargarChofer() {
-      const response = await fetch(`http://localhost:8000/v1/bus/chofer/${this.idChofer}/`);
+      const response = await fetch(
+        `http://localhost:8000/v1/bus/chofer/${this.idChofer}/`
+      );
       const responseData = await response.json();
 
       if (responseData.code == 1) {
-        this.nombre.val = responseData.data.CFR_NOMBRE
-        this.apellido.val = responseData.data.CFR_APELLIDO
-        this.rut.val = responseData.data.CFR_RUT
-        this.ubicacion.val = responseData.data.LGR_ID.LGR_ID
-        this.vigencia.val = responseData.data.CFR_VIGENCIA
+        this.nombre.val = responseData.data.CFR_NOMBRE;
+        this.apellido.val = responseData.data.CFR_APELLIDO;
+        this.rut.val = responseData.data.CFR_RUT;
+        this.ubicacion.val = responseData.data.LGR_ID.LGR_ID;
+        this.vigencia.val = responseData.data.CFR_VIGENCIA;
       }
     }
-  },
+  }
 };
 </script>
 
@@ -235,5 +242,16 @@ h3 {
 .invalid input,
 .invalid textarea {
   border: 1px solid red;
+}
+.form-select {
+  display: block;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 </style>
